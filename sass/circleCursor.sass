@@ -1,0 +1,27 @@
+// minimum styling
+.pointer 
+    // recieves --x and --y to be used by the children, could also recieve --bg for both to change
+    --bg: black
+
+.pointer * 
+    pointer-events: none
+    transform: translate(-50%, -50%)
+    z-index: 1000
+    position: absolute
+    left: var(--x)
+    top: var(--y)
+
+
+.outer 
+    height: 30px
+    aspect-ratio: 1
+    border: solid 1px var(--bg)
+    border-radius: 50%
+    transition: 150ms
+
+.inner 
+    height: 6px
+    aspect-ratio: 1
+    background: var(--bg)
+    border-radius: 50%
+    transition: 100ms
