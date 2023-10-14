@@ -1,0 +1,67 @@
+.box {
+  --color1: #F5A9B8;
+  --color2: #5BCEFA;
+  position: relative;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  font-family: monospace;
+  text-transform: capitalize;
+}
+.box::before, .box::after {
+  content: "";
+  height: 45%;
+  aspect-ratio: 1;
+  z-index: -1;
+  position: absolute;
+  left: -4px;
+  top: -4px;
+  border-radius: calc(0.5rem + 4px) 0 calc(0.5rem + 4px) 0;
+  transition: 300ms;
+}
+.box::after {
+  opacity: 1;
+  background-image: linear-gradient(135deg, var(--color1) 0%, var(--color2) 50%, var(--color1) 100%);
+}
+.box::before {
+  opacity: 0;
+  background-image: linear-gradient(135deg, var(--color2) 0%, var(--color1) 50%, var(--color2) 100%);
+}
+.box:hover::after, .box:focus-within::after {
+  opacity: 0;
+}
+.box:hover::before, .box:focus-within::before {
+  opacity: 1;
+}
+.box a {
+  width: fit-content;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  position: relative;
+  color: black;
+}
+.box a::before, .box a::after {
+  content: "";
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  transition: 300ms;
+}
+.box a::after {
+  opacity: 1;
+  background-image: linear-gradient(90deg, var(--color1), var(--color2));
+}
+.box a::before {
+  opacity: 0;
+  background-image: linear-gradient(90deg, var(--color2), var(--color1));
+}
+.box a:hover::after, .box a:focus::after {
+  opacity: 0;
+}
+.box a:hover::before, .box a:focus::before {
+  opacity: 1;
+}/*# sourceMappingURL=dunksProjectBox.css.map */

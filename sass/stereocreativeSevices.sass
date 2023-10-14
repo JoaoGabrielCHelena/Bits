@@ -1,0 +1,35 @@
+.wrapper
+    display: flex
+    flex-direction: column
+    font-size: 6rem
+    text-transform: uppercase
+    font-family: monospace
+    text-align: center
+    counter-reset: image
+    a
+        margin: 0
+        padding: 1.5rem 0
+        text-decoration: none
+        color: hsla(0deg, 0%, 66.27%, .6)
+        position: relative
+        &:hover
+            color: white
+            &::after
+                opacity: 1
+                transform: translate(-50%, -50%) scale(100%)
+
+
+        &::after
+            position: absolute
+            z-index: -1
+            opacity: 0
+            top: var(--y)
+            left: var(--x)
+            transition: opacity 600ms, transform 300ms
+            transform: translate(-50%, -50%) scale(80%)
+
+
+    @for $var from 1 through 4
+        a:nth-child(#{$var})::after
+            content: url(../images/img#{$var}.jpg) 
+     

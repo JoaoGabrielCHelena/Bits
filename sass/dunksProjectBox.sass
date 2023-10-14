@@ -1,0 +1,69 @@
+.box 
+    --color1: #F5A9B8
+    --color2: #5BCEFA
+    position: relative
+    background: white
+    display: flex
+    flex-direction: column
+    padding: 1.5rem
+    border-radius: .5rem
+    font-family: monospace
+    text-transform: capitalize         
+    &::before, &::after
+        $boder-size: 4px
+        content: ""
+        height: 45%
+        aspect-ratio: 1
+        z-index: -1
+        position: absolute
+        left: -$boder-size
+        top: -$boder-size
+        border-radius: calc(.5rem + $boder-size) 0 calc(.5rem + $boder-size) 0
+        transition: 300ms
+
+
+    &::after
+        opacity: 1
+        background-image: linear-gradient(135deg,var(--color1) 0%,var(--color2) 50%,var(--color1) 100%)
+    &::before
+        opacity: 0
+        background-image: linear-gradient(135deg,var(--color2) 0%,var(--color1) 50%,var(--color2) 100%)
+
+    &:hover, &:focus-within
+        &::after
+            opacity: 0
+
+        &::before
+            opacity: 1
+
+
+    a
+        width: fit-content
+        margin-bottom: 1rem
+        text-decoration: none
+        position: relative
+        color: black
+
+        &::before, &::after
+            $boder-size: 2px
+            content: ""
+            height: $boder-size
+            width: 100%
+            position: absolute
+            left: 0
+            bottom: -$boder-size
+            transition: 300ms
+            
+        &::after
+            opacity: 1
+            background-image: linear-gradient(90deg,var(--color1),var(--color2))
+        &::before
+            opacity: 0
+            background-image: linear-gradient(90deg,var(--color2), var(--color1))
+        
+        &:hover, &:focus
+            &::after
+                opacity: 0
+
+            &::before
+                opacity: 1
