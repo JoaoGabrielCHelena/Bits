@@ -1,0 +1,110 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  height: 100vh;
+  padding: 8rem 1rem;
+}
+
+.card {
+  --shadowX: 0px;
+  --shadowY: 0px;
+  --maxSwivel: 25;
+  --animationDuration: 250ms;
+  margin: 0 auto;
+  display: block;
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  animation: cardAnimB var(--animationDuration) forwards;
+  scale: 100%;
+  line-height: 0;
+}
+.card-img {
+  width: 150px;
+}
+.card::before, .card::after {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+.card::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  translate: -50% -50%;
+  animation: cardBeforeAnimB var(--animationDuration) forwards;
+}
+.card::after {
+  content: "";
+  z-index: -1;
+  height: 95%;
+  width: 95%;
+  animation: cardAfterAnimB var(--animationDuration) forwards;
+  background: rgba(0, 0, 0, 0.6);
+  filter: blur(5px);
+}
+.card:hover {
+  animation: cardAnimF var(--animationDuration) forwards;
+}
+.card:hover::before {
+  animation: cardBeforeAnimF var(--animationDuration) forwards;
+}
+.card:hover::after {
+  animation: cardAfterAnimF var(--animationDuration) forwards;
+}
+
+@keyframes cardAnimF {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  to {
+    scale: 125%;
+    transform: rotateX(var(--swivelY)) rotateY(calc(-1 * var(--swivelX)));
+  }
+}
+@keyframes cardAnimB {
+  from {
+    scale: 125%;
+    transform: rotateX(var(--swivelY)) rotateY(calc(-1 * var(--swivelX)));
+    pointer-events: none;
+  }
+  to {
+    scale: 100%;
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+}
+@keyframes cardBeforeAnimF {
+  from {
+    background: linear-gradient(0, rgba(0, 0, 0, 0.2), transparent 70%, transparent 75%, rgba(255, 225, 0, 0));
+  }
+  to {
+    background: linear-gradient(calc(var(--swivelX) * 2 * var(--binaryY)), rgba(0, 0, 0, calc(-1 * var(--absoluteY) + 0.2)), transparent 70%, transparent 75%, rgba(255, 225, 0, var(--absoluteY)));
+  }
+}
+@keyframes cardBeforeAnimB {
+  from {
+    background: linear-gradient(calc(var(--swivelX) * 2 * var(--binaryY)), rgba(0, 0, 0, calc(-1 * var(--absoluteY) + 0.2)), transparent 70%, transparent 75%, rgba(255, 225, 0, var(--absoluteY)));
+  }
+  to {
+    background: linear-gradient(0, rgba(0, 0, 0, 0.2), transparent 70%, transparent 75%, rgba(255, 225, 0, 0));
+  }
+}
+@keyframes cardAfterAnimF {
+  from {
+    translate: -50% -50%;
+  }
+  to {
+    translate: calc(-50% - var(--shadowX)) calc(-45% + var(--shadowY));
+  }
+}
+@keyframes cardAfterAnimB {
+  from {
+    translate: calc(-50% - var(--shadowX)) calc(-45% + var(--shadowY));
+  }
+  to {
+    translate: -50% -50%;
+  }
+}/*# sourceMappingURL=steamCard.css.map */
