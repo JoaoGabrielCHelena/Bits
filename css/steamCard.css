@@ -22,9 +22,6 @@ body {
   scale: 100%;
   line-height: 0;
 }
-.card-img {
-  width: 150px;
-}
 .card::before, .card::after {
   position: absolute;
   left: 50%;
